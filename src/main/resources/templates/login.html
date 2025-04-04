@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Logga in</title>
+</head>
+<body>
+<h2>Logga in</h2>
+<form th:action="@{/login}" th:object="${user}" method="post">
+
+    <p th:if="${error}" th:text="${error}" style="color:red;"></p>
+
+    <label for="username">Användarnamn:</label>
+    <input type="text" th:field="*{username}" id="username" required><br><br>
+
+    <label for="password">Lösenord:</label>
+    <input type="password" th:field="*{password}" id="password" required><br><br>
+
+    <button type="submit">Logga in</button>
+</form>
+
+
+
+<a href="/register">Registrera</a>
+</body>
+</html>
