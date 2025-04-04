@@ -35,7 +35,7 @@ public class UserController {
                                  @RequestParam String password,
                                  Model model) {
         /*TODO
-         * Register a user
+         * Register a user.
          * Check if user already exists in our DB(Be a nice developer and tell the user that username is already in use)
          * */
         return "redirect:/login";
