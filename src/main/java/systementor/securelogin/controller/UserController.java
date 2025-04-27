@@ -34,10 +34,19 @@ public class UserController {
     public String handleRegister(@RequestParam String username,
                                  @RequestParam String password,
                                  Model model) {
-        /*TODO
-         * Register a user.
-         * Check if user already exists in our DB(Be a nice developer and tell the user that username is already in use)
-         * */
+
+        UserModel newUser = new UserModel();
+        newUser.setUsername(username);
+        newUser.setPassword(password);
+
+        boolean registrationSuccess = userService.saveUser(newUser);
+
+        if (!registrationSuccess) {
+            model.addAttribute("user", newUser);
+            model.addAttribute("error", "Välj ett annat användarnamn");
+            return "register";
+        }
+
         return "redirect:/login";
     }
 

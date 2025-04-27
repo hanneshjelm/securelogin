@@ -14,10 +14,20 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    /*TODO
-        *Save User (OBS! Make sure the password is encrypted by Bcrypt)
-        *check if user already exists (VG)
-    * */
+    public boolean saveUser(UserModel user) {
+
+        Optional<String> existingUser = findByUsername(user.getUsername());
+        if (existingUser.isPresent()) {
+            return false;
+        }
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encryptedPassword = encoder.encode(user.getPassword());
+        user.setPassword(encryptedPassword);
+
+        userRepository.save(user);
+        return true;
+    }
 
     public Optional<String> findByUsername(String username) {
         return userRepository.findByUsername(username).map(UserModel::getPassword);

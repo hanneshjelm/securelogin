@@ -1,23 +1,91 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="sv">
 <head>
+    <meta charset="UTF-8">
     <title>Registrera</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: url("/Images/loginPage.jpg") no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+            padding-left: 200px;
+        }
+        .container {
+            background-color: #00000099;
+            border-radius: 8px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background-color: #FFFFFF33;
+            color: white;
+        }
+        input::placeholder {
+            color: #dddddd;
+        }
+        input:focus {
+            outline: none;
+            background-color: #FFFFFF4C;
+        }
+        button {
+            background-color: white;
+            color: #3498db;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #3498db;
+            color: white;
+        }
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        a {
+            color: #a7d8f0;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-<h2>Registrera</h2>
-<form th:action="@{/register}" th:object="${user}" method="post">
+<div class="container">
+    <h2>Registrera</h2>
 
+    <p th:if="${error}" th:text="${error}" style="color: #e74c3c; text-align: center;"></p>
 
-    <p th:if="${error}" th:text="${error}" style="color:red;"></p>
+    <form th:action="@{/register}" th:object="${user}" method="post">
+        <input type="text" name="username" placeholder="Användarnamn" required>
+        <input type="password" name="password" placeholder="Lösenord" required>
+        <button type="submit">Registrera</button>
+    </form>
 
-    <label for="username">Användarnamn:</label>
-    <input type="text" name="username" id="username" required><br><br>
-
-    <label for="password">Lösenord:</label>
-    <input type="password" name="password" id="password" required><br><br>
-
-    <button type="submit">Registrera</button>
-</form>
-
+    <div class="links">
+        <a href="/login">Tillbaka till inloggning</a>
+    </div>
+</div>
 </body>
 </html>

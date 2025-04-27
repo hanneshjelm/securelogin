@@ -1,9 +1,57 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="sv">
 <head>
+    <meta charset="UTF-8">
     <title>Välkommen</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: url("/Images/loginPage.jpg") no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+            padding-left: 200px;
+        }
+        .container {
+            background-color: #00000099;
+            border-radius: 8px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h2 {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        .username {
+            color: #3498db;
+            font-weight: bold;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: white;
+            color: #e74c3c;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        a:hover {
+            background-color: #e74c3c;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-<h2>Välkommen, <span th:text="${username}">användare</span>!</h2>
+<div class="container">
+    <h2>Välkommen, <span class="username" th:text="${username}">användare</span>!</h2>
+    <p>Grattis, du har loggat in!</p>
+
+    <a href="/login">Logga ut</a>
+</div>
 </body>
 </html>
